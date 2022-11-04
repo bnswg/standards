@@ -12,13 +12,13 @@ By pointing a human-readable name at the account or address enable, users can se
 
 ### 1.1 Example: Sending BTC to a name
 
-A donor wishing to donate BTC to the Bitcoin Association of Hong Kong has to locate the donation address on [bitcoin.org.hk](https://www.bitcoin.org.hk) , _1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS_, and then copy and paste or type it into his wallet before sending the donation. With this standard and wallet support, the user could enter “bitcoin.org.hk” in his wallet and send bitcoin directly to the appropriate address.
+A donor wishing to donate BTC to the Bitcoin Association of Hong Kong has to locate the donation address on [bitcoin.org.hk](https://www.bitcoin.org.hk) , `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS`, and then copy and paste or type it into his wallet before sending the donation. With this standard and wallet support, the user could enter `bitcoin.org.hk` in his wallet and send bitcoin directly to the appropriate address.
 
 ### 1.2 Example: Automated, recurring payments
 
 The previous donor might want to make a monthly BTC donation to the Bitcoin Association of Hong Kong. To do this, he would have to look up the current address for the association each month or the association would have to commit to never changing the address. The association might not want to make that commitment because The association, however, might not want to make such a commitment because changing the address has a number of potential benefits. It might enable support a new address format bringing possibly lower fees, more functionality or improved security. Changing the address might reflect a new multi-sig wallet generated to reflect a change in board membership.
 
-Instead, with this standard, he could authorize his wallet to periodically send cryptocurrency to “bitcoin.org.hk” and his wallet could figure out the appropriate address at which the association wishes to receive donations on his behalf.
+Instead, with this standard, he could authorize his wallet to periodically send cryptocurrency to `bitcoin.org.hk` and his wallet could figure out the appropriate address at which the association wishes to receive donations on his behalf.
 
 ## 2. Terminology
 
@@ -145,6 +145,35 @@ The intent of this standard is to result in a set of tools and applications that
 - Zone file support
 - Built-in cryptographic authentication of TLD, unclear about the cryptographic guarantees for subdomains of TLDs
 - HNS coin types can default to owner of the name
+
+### 5. Future work
+
+Addresses for layer 2 payment networks such as the Lightning Network use different address formats than used by the underlying coin. It is important that they be integrated into this standard. A couple approaches come to mind which are outlined below for completeness and as a jumping off point for further research and discussion.
+
+#### 5.1 Layer approach
+
+An underscored attribute leaf node specific to the layer 2 network could be prepended to the existing attribute record name and be used to store the ligthning address.
+
+```
+_ln._btc._addr.larry.btc.   IN   TXT   "larry@bitcoin.org.hk"
+```
+
+#### 5.2 Overloading approach
+
+Layer 2 payment network addresses could be directly stored in the attribute resource record defined in this standard and associated tooling (or wallets) could be responsible for recognizing the type of address.
+
+```
+_btc._addr.larry.btc.   IN   TXT   "larry@bitcoin.org.hk"
+```
+
+#### 5.3 Different token approach
+
+There is a line of reason that says tokens on a layer 2 payment network are not the same tokens as those on the layer 1 network because they have different functionality and risk characteristics. It is possible to treat tokens on another layer such as bitcoins on the Lightning Networks a different coin with respect to this standard and differentiate by attribute names.
+
+```
+_lnbtc._addr.larry.btc.   IN   TXT   "larry@bitcoin.org.hk"
+_btc._addr.larry.btc.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
+```
 
 ## 6. References
 
