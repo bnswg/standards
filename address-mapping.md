@@ -106,8 +106,8 @@ resolveName("example.com").getDefaultAddress("STX"); // returns null
 #### 3.4.4 BNS name with a BTC address and a STX account
 
 ```
-	_btc._addr.muneeb.btc.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
-	_stx._addr.muneeb.btc.   IN   TXT   "SP000000000000000000002Q6VF78"
+_btc._addr.muneeb.btc.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
+_stx._addr.muneeb.btc.   IN   TXT   "SP000000000000000000002Q6VF78"
 ```
 
 BNS name `muneeb.btc` resolves to the BTC address `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS` and the STX address `SP000000000000000000002Q6VF78`.
