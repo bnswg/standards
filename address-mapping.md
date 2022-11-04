@@ -59,7 +59,7 @@ Addresses are stored as a comma-delimited list. The first address in the list is
 #### 3.4.1 DNS name with single BTC address
 
 ```
-	_btc._addr.bitcoin.org.hk.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
+_btc._addr.bitcoin.org.hk.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
 ```
 
 DNS name `bitcoin.org.hk` resolves to BTC address `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS`
@@ -74,25 +74,25 @@ resolveName("bitcoin.org.hk).getAddresses("STX") // returns null
 #### 3.4.2 BNS name with single BTC address
 
 ```
-	_btc._addr.muneeb.btc.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
+_btc._addr.muneeb.btc.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
 ```
 
 BNS name `muneeb.btc` owned by `SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX` resolves to BTC address `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS`.
 
 ```javascript
-	resolveName("muneeb.btc").getDefaultAddress("BTC") // returns { coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }
+resolveName("muneeb.btc").getDefaultAddress("BTC") // returns { coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }
 
-	resolveName("muneeb.btc").getAddresses("BTC") // returns [{ coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }]
+resolveName("muneeb.btc").getAddresses("BTC") // returns [{ coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }]
 
-	resolveName("bitcoin.org.hk).getDefaultAddress("STX") // returns { coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }
+resolveName("bitcoin.org.hk).getDefaultAddress("STX") // returns { coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }
 
-	resolveName("bitcoin.org.hk).getAddresses("STX") // returns [{ coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }]
+resolveName("bitcoin.org.hk).getAddresses("STX") // returns [{ coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }]
 ```
 
 #### 3.4.3 DNS name with multiple BTC addresses
 
 ```
-	_btc._addr.example.com.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS,1111111111111111111114oLvT2"
+_btc._addr.example.com.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS,1111111111111111111114oLvT2"
 ```
 
 DNS name `example.com` resolves to the BTC addresses `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS` and `1111111111111111111114oLvT2`. The default BTC address is `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS`.
@@ -120,6 +120,8 @@ resolveName("muneeb.btc").getDefaultAddress("STX"); // returns { coin: "STX", ad
 
 ## 4. Specific Name System Considerations
 
+The intent of this standard is to result in a set of tools and applications that can work across multiple name systems. This section currently lists name system attributes that may have bearing on the interaction of this standard with the system.
+
 ### 4.1 BNS - Bitcoin Name System
 
 - Zone file support
@@ -132,17 +134,17 @@ resolveName("muneeb.btc").getDefaultAddress("STX"); // returns { coin: "STX", ad
 - DNSSEC provides a degree of cryptographic authentication
 - No default address
 
-### 4.3 HNS - Handshake Name System
-
-- Zone file support
-- Built-in cryptographic authentication of TLD, unclear about the cryptographic guarantees for subdomains of TLDs
-- HNS coin types can default to owner of the name
-
-### 4.4 ENS - Ethereum Name System
+### 4.3 ENS - Ethereum Name System
 
 - Generally, does not support zone files. Possible to adapt to standard to txt type.
 - Built-in cryptographic authentication
 - ETH coin types can default to owner of the name
+
+### 4.4 HNS - Handshake Name System
+
+- Zone file support
+- Built-in cryptographic authentication of TLD, unclear about the cryptographic guarantees for subdomains of TLDs
+- HNS coin types can default to owner of the name
 
 ## 6. References
 
