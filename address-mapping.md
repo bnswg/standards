@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Sending a cryptocurrency transaction requires a long, human-hostile sequence of characters By pointing a human-readable name at the address, users can send cryptocurrency to the name instead of needing to ask for an address. This enables a more user-friendly experience, improved security and enables additional functionality such as automated-recurring transactions. In this document, we propose a standard for global name systems that map names to addresses.
+Sending a cryptocurrency transaction requires a long, human-hostile sequence of characters. By pointing a human-readable name at the address, users can send cryptocurrency to the name instead of needing to ask for an address. This enables a more user-friendly experience, improved security and enables additional functionality such as automated-recurring transactions. In this document, we propose a standard for global name systems that map names to addresses.
 
 ## 1. Introduction & Use Cases
 
@@ -65,10 +65,10 @@ _btc._addr.bitcoin.org.hk.   IN   TXT   "1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS"
 DNS name `bitcoin.org.hk` resolves to BTC address `1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS`
 
 ```javascript
-resolveName("bitcoin.org.hk).getDefaultAddress("BTC") // returns { coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }
-resolveName("bitcoin.org.hk).getAddresses("BTC") // returns [{ coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }]
-resolveName("bitcoin.org.hk).getDefaultAddress("STX") // returns null
-resolveName("bitcoin.org.hk).getAddresses("STX") // returns null
+resolveName("bitcoin.org.hk").getDefaultAddress("BTC") // returns { coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }
+resolveName("bitcoin.org.hk").getAddresses("BTC") // returns [{ coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }]
+resolveName("bitcoin.org.hk").getDefaultAddress("STX") // returns null
+resolveName("bitcoin.org.hk").getAddresses("STX") // returns null
 ```
 
 #### 3.4.2 BNS name with single BTC address
@@ -84,9 +84,9 @@ resolveName("muneeb.btc").getDefaultAddress("BTC") // returns { coin: "BTC", add
 
 resolveName("muneeb.btc").getAddresses("BTC") // returns [{ coin: "BTC", address:"1BAHK1Esvn6L1icZREB8SFqTy7bBSRDwaS" }]
 
-resolveName("bitcoin.org.hk).getDefaultAddress("STX") // returns { coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }
+resolveName("bitcoin.org.hk").getDefaultAddress("STX") // returns { coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }
 
-resolveName("bitcoin.org.hk).getAddresses("STX") // returns [{ coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }]
+resolveName("bitcoin.org.hk").getAddresses("STX") // returns [{ coin: "STX", address:"SP132QXWFJ11WWXPW4JBTM9FP6XE8MZWB8AF206FX" }]
 ```
 
 #### 3.4.3 DNS name with multiple BTC addresses
